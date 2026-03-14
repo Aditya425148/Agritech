@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agritech | Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <div class="landing-shell">
+    <header class="topbar">
+      <a class="brand" href="./landing.html">
+        <span class="brand-mark">A</span>
+        <span class="brand-text">Agritech</span>
+      </a>
+
+      <nav class="topnav">
+        <a href="./landing.html#features">Features</a>
+        <a href="./landing.html#how-it-works">How It Works</a>
+        <a href="./login.html" class="topnav-cta">Login</a>
+      </nav>
+    </header>
+
+    <main class="login-page">
+      <section class="login-layout">
+        <div class="login-copy">
+          <div class="eyebrow">Secure Access to Agritech</div>
+          <h1>
+            Welcome Back.
+            <span>Login to Continue.</span>
+          </h1>
+          <p class="hero-text">
+            Sign in to access your dashboard, crop analysis, state comparison tools,
+            and Agro AI-powered agriculture insights.
+          </p>
+          <div class="login-benefits">
+            <div>
+              <strong>Dashboard Access</strong>
+              <span>Open production charts and reports instantly.</span>
+            </div>
+            <div>
+              <strong>Agro AI</strong>
+              <span>Ask natural queries and view answers in seconds.</span>
+            </div>
+            <div>
+              <strong>Smarter Decisions</strong>
+              <span>Use analytics to understand crop performance better.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="login-panel standalone-login">
+          <div class="login-card">
+            <p class="panel-label">Account Access</p>
+            <h2 id="auth-title">Login to Agritech</h2>
+            <p class="panel-text">
+              New users need to sign up first. Returning users can log in with the same account.
+            </p>
+
+            <div class="auth-switch" aria-label="Authentication mode">
+              <button type="button" class="auth-tab active" data-mode="login">Login</button>
+              <button type="button" class="auth-tab" data-mode="signup">Sign Up</button>
+            </div>
+
+            <div id="auth-message" class="auth-message" hidden></div>
+
+            <form class="login-form" id="auth-form" novalidate>
+              <div class="signup-only" hidden>
+                <label for="signup-name">Full Name</label>
+                <input id="signup-name" type="text" placeholder="Enter your full name">
+              </div>
+
+              <label for="login-email">Email</label>
+              <input id="login-email" type="email" placeholder="you@example.com">
+
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" placeholder="Enter password">
+
+              <div class="signup-only" hidden>
+                <label for="confirm-password">Confirm Password</label>
+                <input id="confirm-password" type="password" placeholder="Confirm password">
+              </div>
+
+              <div class="login-meta">
+                <label class="remember">
+                  <input id="remember-user" type="checkbox">
+                  <span>Remember me</span>
+                </label>
+                <a href="./landing.html">Back to home</a>
+              </div>
+
+              <button type="submit" id="auth-submit" class="primary-btn login-btn">Login</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="./login.js"></script>
+</body>
+</html>

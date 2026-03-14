@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>State Analysis</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html">Dashboard</a>
+  <a href="/state.html">State Analysis</a>
+  <a href="/crop.html">Crop Analysis</a>
+  <a href="/profile.html">Profile</a>
+</nav>
+
+<div class="container">
+
+  <h2>State Comparison Analysis</h2>
+
+  <div class="card">
+
+    <h3>Select States</h3>
+    <div id="states" class="checkbox-container"></div>
+
+    <br>
+
+    <label class="lab">Crop:</label>
+    <select id="crop"></select>
+
+    <label class="lab">Year:</label>
+    <select id="year"></select>
+
+    <button onclick="compareStates()" class="btn">Compare</button>
+
+  </div>
+
+  <div class="card">
+    <h3>Production Comparison</h3>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h3>Production Share</h3>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h3>Comparison Table</h3>
+    <table id="resultTable" width="100%" border="1"></table>
+  </div>
+
+</div>
+<!-- 🌾 AGRO AI FLOATING BUTTON -->
+<div id="agro-ai-btn">🌾</div>
+
+<!-- 🌾 AGRO AI CHATBOX -->
+<div id="agro-chat" class="hidden">
+  <div class="chat-header">🌾 Agro AI</div>
+  <div id="chat-messages"></div>
+  <input type="text" id="chat-input" placeholder="Ask about crops, production..." />
+</div>
+
+<script src="state.js"></script>
+</body>
+</html>

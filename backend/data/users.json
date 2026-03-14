@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ccaa3b3c-ae26-40c4-9998-8afe3f39312f",
+    "name": "Aditya Raghuvanshi",
+    "email": "aadi100right@gmail.com",
+    "salt": "a4a4198c94beb036a66350d25115ce54",
+    "passwordHash": "3bb8c61c24e587f3a880de0c1c17748e4415030e776d40eeb1b909565ed729fbea68d9b8d53eafd2b6753f28ab5bada46cfeb62c8ddb4930c2ddf54d0a4252e8",
+    "createdAt": "2026-03-13T16:59:18.804Z"
+  },
+  {
+    "id": "78e112b7-a240-4a63-8c43-8230b7c768f3",
+    "name": "Sanjeev Singh",
+    "email": "sanjeevthakur425@gmail.com",
+    "salt": "a2d8d3daa9731fa4c2b2d5ec4abe12f7",
+    "passwordHash": "f92083f907c59fd2091c680672a22103a9412e12f50b55fdefe828f474dfbe1db0d42f8eb551f4638794e5f7e671f4b9ab8333cc2fe380ed20181d93fd19912a",
+    "createdAt": "2026-03-13T17:08:33.177Z"
+  },
+  {
+    "id": "d0309e66-789f-41ce-9a5c-11347de23775",
+    "name": "Yash Chaudhary",
+    "email": "yashchaudhary3355@gmail.com",
+    "salt": "65590d3606917f11d27d01b9d20b4902",
+    "passwordHash": "4871a0110c8c839baeb946f842937b0a99c0bea56a1745dabe5526d08b5c214c90c46563f9c3321930f9a809c9fb5d4b40f9950f1f971a05605f4bd34cef3752",
+    "createdAt": "2026-03-13T17:18:20.549Z"
+  }
+]

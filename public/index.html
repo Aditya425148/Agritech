@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html">Dashboard</a>
+  <a href="/state.html">State Analysis</a>
+  <a href="/crop.html">Crop Analysis</a>
+  <a href="/profile.html">Profile</a>
+</nav>
+
+<div class="container">
+
+  <h2>Dashboard Overview</h2>
+
+  <div class="card">
+    <h3>Top Producing States</h3>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h3>Yearly Production Trend</h3>
+    <canvas id="lineChart"></canvas>
+  </div>
+
+</div>
+
+<!-- 🌾 AGRO AI FLOATING BUTTON -->
+<div id="agro-ai-btn">🌾</div>
+
+<!-- 🌾 AGRO AI CHATBOX -->
+<div id="agro-chat" class="hidden">
+  <div class="chat-header">🌾 Agro AI</div>
+  <div id="chat-messages"></div>
+  <input type="text" id="chat-input" placeholder="Ask about crops, production..." />
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
