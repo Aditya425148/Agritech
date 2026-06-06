@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State Analysis</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">
+      <strong>AgriTech</strong>
+      <span>State-wise agriculture comparison</span>
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Dashboard</a>
+      <a href="/state.html" class="active">State Analysis</a>
+      <a href="/crop.html">Crop Analysis</a>
+      <a href="/profile.html">Profile</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">State Comparison</span>
+        <h2>See how selected states perform for any crop and year.</h2>
+        <p>
+          Choose multiple states, focus on one crop-season snapshot, and review production,
+          share, and supporting table data together.
+        </p>
+      </div>
+
+      <div class="hero-side">
+        <div class="hero-side-card">
+          <span>Comparison lens</span>
+          <strong>Output + Share + Yield</strong>
+          <p>The page balances chart insight with tabular detail so you can cross-check fast.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="analysis-grid">
+      <article class="card">
+        <div class="section-heading">
+          <div>
+            <h3>Build Comparison</h3>
+            <p>Select states and filter the crop-year combination you want to study.</p>
+          </div>
+        </div>
+
+        <div class="field-group full">
+          <label for="states">Select States</label>
+          <div id="states" class="checkbox-container"></div>
+        </div>
+
+        <div class="filter-grid">
+          <div class="field-group">
+            <label for="crop">Crop</label>
+            <select id="crop"></select>
+          </div>
+
+          <div class="field-group">
+            <label for="year">Year</label>
+            <select id="year"></select>
+          </div>
+
+          <div class="field-group full">
+            <button onclick="compareStates()" class="btn">Compare States</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="section-heading">
+          <div>
+            <h3>Reading Guide</h3>
+            <p>A simple structure to keep the comparison sharp and meaningful.</p>
+          </div>
+        </div>
+        <ul class="hint-list">
+          <li>Use 2 to 5 states for the clearest chart balance and pie-share reading.</li>
+          <li>The bar chart helps with direct output comparison, while the doughnut shows overall share.</li>
+          <li>The table below is useful for checking area and yield beside production.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="card chart-card">
+        <div class="section-heading">
+          <div>
+            <h3>Production Comparison</h3>
+            <p>Sorted bars make the strongest performers stand out instantly.</p>
+          </div>
+        </div>
+        <canvas id="barChart"></canvas>
+      </article>
+
+      <article class="card chart-card compact-chart">
+        <div class="section-heading">
+          <div>
+            <h3>Production Share</h3>
+            <p>Doughnut chart gives a cleaner proportion view than a basic pie layout.</p>
+          </div>
+        </div>
+        <canvas id="pieChart"></canvas>
+      </article>
+    </section>
+
+    <section class="card table-card">
+      <div class="section-heading">
+        <div>
+          <h3>Comparison Table</h3>
+          <p>Production, cultivated area, and yield arranged in one easy scan.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="resultTable"></table>
+      </div>
+    </section>
+  </main>
+
+  <button id="agro-ai-btn" type="button" aria-label="Open Agro Ai">
+    <span class="ai-btn-dot"></span>
+    <span>Agro Ai</span>
+  </button>
+
+  <div id="agro-chat" class="hidden">
+    <div class="chat-header">
+      <div class="chat-title">
+        <span>Agro Ai</span>
+        <small>Your agriculture workspace for insights, comparisons, charts, and summaries.</small>
+      </div>
+      <button id="chat-close" class="chat-close" type="button" aria-label="Close Agro Ai">&times;</button>
+    </div>
+    <div class="chat-subheader">
+      <strong>Ask anything about this website's agriculture data.</strong>
+      <div id="chat-quick-actions" class="chat-quick-actions"></div>
+    </div>
+    <div id="chat-messages"></div>
+    <div class="chat-composer">
+      <input type="text" id="chat-input" placeholder="Ask about crops, states, trends, top states, dashboard summary..." />
+      <button id="chat-send" class="chat-send" type="button">Send</button>
+    </div>
+  </div>
+
+  <script src="state.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
