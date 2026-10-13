@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">
+      <strong>AgriTech</strong>
+      <span>Smart agriculture intelligence dashboard</span>
+    </div>
+    <div class="nav-links">
+      <a href="/index.html" class="active">Dashboard</a>
+      <a href="/state.html">State Analysis</a>
+      <a href="/crop.html">Crop Analysis</a>
+      <a href="/profile.html">Profile</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">National Overview</span>
+        <h1>A cleaner view of crop performance across India.</h1>
+        <p>
+          Track top-producing states, yearly production movement, and the most important
+          agriculture signals from one calm, professional dashboard.
+        </p>
+      </div>
+
+      <div class="hero-side">
+        <div class="hero-side-card">
+          <span>Monitoring focus</span>
+          <strong>Production + Trends</strong>
+          <p>Charts and quick stats are tuned to make performance shifts easier to read.</p>
+        </div>
+        <div class="hero-side-card">
+          <span>Best for</span>
+          <strong>Fast decision scans</strong>
+          <p>Useful for comparing output, identifying leaders, and spotting long-term changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="card compact metric-card">
+        <div class="metric-label">Top State</div>
+        <p class="metric-value" id="topStateMetric">Loading...</p>
+        <p class="metric-footnote" id="topStateMetricNote">Checking the strongest production performer.</p>
+      </article>
+
+      <article class="card compact metric-card">
+        <div class="metric-label">Peak Production Year</div>
+        <p class="metric-value" id="peakYearMetric">Loading...</p>
+        <p class="metric-footnote" id="peakYearMetricNote">Reviewing trend records across available years.</p>
+      </article>
+
+      <article class="card compact metric-card">
+        <div class="metric-label">States in Top View</div>
+        <p class="metric-value" id="statesMetric">0</p>
+        <p class="metric-footnote">Quick benchmark set used in the leaderboard chart.</p>
+      </article>
+
+      <article class="card compact metric-card">
+        <div class="metric-label">Trend Direction</div>
+        <p class="metric-value" id="trendMetric">Loading...</p>
+        <p class="metric-footnote" id="trendMetricNote">Comparing earliest and latest yearly production.</p>
+      </article>
+    </section>
+
+    <section class="charts-grid">
+      <article class="card chart-card">
+        <div class="section-heading">
+          <div>
+            <h3>Top Producing States</h3>
+            <p>Horizontal ranking makes state-wise output easier to compare.</p>
+          </div>
+        </div>
+        <canvas id="barChart"></canvas>
+      </article>
+
+      <article class="card chart-card">
+        <div class="section-heading">
+          <div>
+            <h3>Yearly Production Trend</h3>
+            <p>Smoothed trend line with filled area for better long-term readability.</p>
+          </div>
+        </div>
+        <canvas id="lineChart"></canvas>
+      </article>
+    </section>
+  </main>
+
+  <button id="agro-ai-btn" type="button" aria-label="Open Agro Ai">
+    <span class="ai-btn-dot"></span>
+    <span>Agro Ai</span>
+  </button>
+
+  <div id="agro-chat" class="hidden">
+    <div class="chat-header">
+      <div class="chat-title">
+        <span>Agro Ai</span>
+        <small>Your agriculture workspace for insights, comparisons, charts, and summaries.</small>
+      </div>
+      <button id="chat-close" class="chat-close" type="button" aria-label="Close Agro Ai">&times;</button>
+    </div>
+    <div class="chat-subheader">
+      <strong>Ask anything about this website's agriculture data.</strong>
+      <div id="chat-quick-actions" class="chat-quick-actions"></div>
+    </div>
+    <div id="chat-messages"></div>
+    <div class="chat-composer">
+      <input type="text" id="chat-input" placeholder="Ask about crops, states, trends, top states, dashboard summary..." />
+      <button id="chat-send" class="chat-send" type="button">Send</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
