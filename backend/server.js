@@ -3,7 +3,6 @@ const cors = require("cors");
 const { MongoClient } = require("mongodb");
 const path = require("path");
 const crypto = require("crypto");
-const { spawn } = require("child_process");
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
 const app = express();
@@ -122,6 +121,27 @@ const yieldOptions = {
   Fertilizer_Used: [true, false],
   Irrigation_Used: [true, false]
 };
+// These are the fitted values from model/crop_yield_model.pkl. The original
+// pipeline is a OneHotEncoder followed by LinearRegression, so evaluating the
+// encoded feature vector here gives the same prediction without requiring a
+// Python runtime (Vercel's Node serverless functions do not provide one).
+const yieldModel = {
+  categories: [
+    ["East", "North", "South", "West"],
+    ["Chalky", "Clay", "Loam", "Peaty", "Sandy", "Silt"],
+    ["Barley", "Cotton", "Maize", "Rice", "Soybean", "Wheat"],
+    ["Cloudy", "Rainy", "Sunny"]
+  ],
+  coefficients: [
+    -0.0004555795213134874, 0.0014677697476583292, -0.00009489705218271722, -0.0009172931741623059,
+    -0.0011255731557069564, 0.0023713319608729268, 0.0007301734222288027, -0.001051364455369338,
+    0.0015128335848269684, -0.002437401356851871, 0.001387482033329251, 0.0003636960772953127,
+    -0.0014544596515657555, 0.0012912020545554682, -0.0004180990192583967, -0.0011698214943551613,
+    -0.00011584872776647932, 0.00006459059413935968, 0.00005125813362699422, 0.004993346154595176,
+    0.01989868477891502, 1.5010498462845003, 1.1992300320216378, 0.000042320479057564927
+  ],
+  intercept: 0.0023323975747597814
+};
 app.get("/api/yield-analyzer/options", (req, res) => res.json(yieldOptions));
 
 app.post("/api/yield-analyzer/predict", (req, res) => {
@@ -138,21 +158,19 @@ app.post("/api/yield-analyzer/predict", (req, res) => {
     if (!Number.isFinite(Number(data[field]))) return res.status(400).json({ error: `${field} must be a valid number.` });
   }
 
-  const python = process.env.PYTHON_PATH || "python";
-  const child = spawn(python, [path.join(__dirname, "yield_predictor.py")], { windowsHide: true });
-  let stdout = "", stderr = "";
-  child.stdout.on("data", (chunk) => { stdout += chunk; });
-  child.stderr.on("data", (chunk) => { stderr += chunk; });
-  child.on("error", (error) => res.status(500).json({ error: `Prediction service could not start: ${error.message}` }));
-  child.on("close", (code) => {
-    if (code !== 0) {
-      console.error("Yield predictor error:", stderr);
-      return res.status(500).json({ error: "The saved yield model could not generate a prediction." });
-    }
-    try { res.json(JSON.parse(stdout)); }
-    catch (error) { console.error("Yield predictor response:", stdout, stderr); res.status(500).json({ error: "The prediction response was invalid." }); }
-  });
-  child.stdin.end(JSON.stringify(data));
+  const categoricalValues = [data.Region, data.Soil_Type, data.Crop, data.Weather_Condition];
+  const features = yieldModel.categories.flatMap((categories, index) =>
+    categories.map((category) => categoricalValues[index] === category ? 1 : 0)
+  );
+  features.push(
+    Number(data.Rainfall_mm), Number(data.Temperature_Celsius),
+    data.Fertilizer_Used ? 1 : 0, data.Irrigation_Used ? 1 : 0,
+    Number(data.Days_to_Harvest)
+  );
+  const prediction = yieldModel.intercept + yieldModel.coefficients.reduce(
+    (total, coefficient, index) => total + coefficient * features[index], 0
+  );
+  res.json({ predicted_yield_tons_per_hectare: prediction });
 });
 if (require.main === module) app.listen(PORT, () => console.log("Server running on http://localhost:" + PORT));
 module.exports = app;
