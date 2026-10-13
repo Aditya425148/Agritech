@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yield Analyzer | AgriTech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">
+      <strong>AgriTech</strong>
+      <span>Model-powered crop yield forecasting</span>
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Dashboard</a>
+      <a href="/state.html">State Analysis</a>
+      <a href="/crop.html">Crop Analysis</a>
+      <a href="/yield.html" class="active">Yield Analyzer</a>
+      <a href="/profile.html">Profile</a>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Yield Forecast</span>
+        <h1>Estimate your crop yield before harvest.</h1>
+        <p>Use growing-region, soil, crop, weather, and farm-practice conditions to forecast crop yield in tons per hectare. Every selection is evaluated by the saved crop-yield ML model.</p>
+      </div>
+      <div class="hero-side">
+        <div class="hero-side-card">
+          <span>Prediction unit</span>
+          <strong>Tons / hectare</strong>
+          <p>A practical estimate of total crop yield produced per hectare.</p>
+        </div>
+        <div class="hero-side-card">
+          <span>Input style</span>
+          <strong>Selection-first</strong>
+          <p>Choose ready-made values instead of typing crop, soil, region, or weather details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="yield-layout">
+      <article class="card">
+        <div class="section-heading">
+          <div>
+            <h3>Enter growing conditions</h3>
+            <p>Select the conditions for the field you want to analyse.</p>
+          </div>
+        </div>
+        <form id="yieldForm" class="filter-grid yield-form">
+          <div class="field-group"><label for="Region">Region</label><select id="Region" name="Region" required></select></div>
+          <div class="field-group"><label for="Soil_Type">Soil type</label><select id="Soil_Type" name="Soil_Type" required></select></div>
+          <div class="field-group"><label for="Crop">Crop</label><select id="Crop" name="Crop" required></select></div>
+          <div class="field-group"><label for="Weather_Condition">Weather condition</label><select id="Weather_Condition" name="Weather_Condition" required></select></div>
+          <div class="field-group"><label for="Rainfall_mm">Rainfall (mm)</label><select id="Rainfall_mm" name="Rainfall_mm" required></select></div>
+          <div class="field-group"><label for="Temperature_Celsius">Average temperature (°C)</label><select id="Temperature_Celsius" name="Temperature_Celsius" required></select></div>
+          <div class="field-group"><label for="Fertilizer_Used">Fertilizer used</label><select id="Fertilizer_Used" name="Fertilizer_Used" required></select></div>
+          <div class="field-group"><label for="Irrigation_Used">Irrigation used</label><select id="Irrigation_Used" name="Irrigation_Used" required></select></div>
+          <div class="field-group full"><label for="Days_to_Harvest">Days to harvest</label><select id="Days_to_Harvest" name="Days_to_Harvest" required></select></div>
+          <div class="field-group full"><button class="btn" id="predictButton" type="submit">Predict Yield</button></div>
+        </form>
+      </article>
+
+      <aside class="card yield-guide">
+        <div class="section-heading"><div><h3>What the model considers</h3><p>The forecast uses these agricultural signals together.</p></div></div>
+        <ul class="summary-list">
+          <li><strong>Location and crop setting</strong> Region, soil type, and crop type set the farming context.</li>
+          <li><strong>Growing environment</strong> Rainfall, temperature, and seasonal weather describe crop conditions.</li>
+          <li><strong>Farm practices</strong> Fertilizer, irrigation, and days to harvest shape the estimated output.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="predictionResult" class="card prediction-card" aria-live="polite" hidden>
+      <div class="prediction-kicker">Model prediction</div>
+      <p id="predictionValue" class="prediction-value">—</p>
+      <p class="prediction-unit">tons per hectare</p>
+      <p id="predictionSummary" class="prediction-summary"></p>
+    </section>
+  </main>
+  <script src="yield.js"></script>
+</body>
+</html>

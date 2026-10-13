@@ -246,6 +246,58 @@ nav a.active {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.yield-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.75fr);
+  gap: 20px;
+}
+
+.yield-form {
+  margin-top: 0;
+}
+
+.yield-guide .summary-list li {
+  padding: 15px 16px;
+}
+
+.prediction-card {
+  margin-top: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 253, 247, 0.96), rgba(234, 210, 178, 0.7));
+}
+
+.prediction-kicker {
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.prediction-value {
+  margin: 10px 0 2px;
+  color: var(--primary-dark);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.prediction-unit,
+.prediction-summary {
+  color: var(--text-soft);
+}
+
+.prediction-unit {
+  margin: 0;
+  font-weight: 700;
+}
+
+.prediction-summary {
+  max-width: 650px;
+  margin: 16px auto 0;
+  line-height: 1.6;
+}
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -781,6 +833,7 @@ body.ai-panel-open #agro-chat {
   .analysis-grid,
   .charts-grid,
   .content-grid,
+  .yield-layout,
   .stats-grid {
     grid-template-columns: 1fr;
   }

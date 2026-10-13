@@ -3,6 +3,7 @@ const cors = require("cors");
 const { MongoClient } = require("mongodb");
 const path = require("path");
 const crypto = require("crypto");
+const { spawn } = require("child_process");
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
 const app = express();
@@ -111,6 +112,47 @@ app.get("/api/crop-analysis", async (req, res) => {
     if (!crop || !year) return res.status(400).json({ error: "Missing query parameters" });
     res.json(await analysisByState({ normalized_crop_name: normalizedName(crop), year: yearPattern(year) }, 10));
   } catch (error) { console.error(error); res.status(500).json({ error: error.message }); }
+});
+
+const yieldOptions = {
+  Region: ["North", "East", "South", "West"],
+  Soil_Type: ["Clay", "Sandy", "Loam", "Silt", "Peaty", "Chalky"],
+  Crop: ["Wheat", "Rice", "Maize", "Barley", "Soybean", "Cotton"],
+  Weather_Condition: ["Sunny", "Rainy", "Cloudy"],
+  Fertilizer_Used: [true, false],
+  Irrigation_Used: [true, false]
+};
+app.get("/api/yield-analyzer/options", (req, res) => res.json(yieldOptions));
+
+app.post("/api/yield-analyzer/predict", (req, res) => {
+  const data = req.body || {};
+  const required = ["Region", "Soil_Type", "Crop", "Rainfall_mm", "Temperature_Celsius", "Fertilizer_Used", "Irrigation_Used", "Weather_Condition", "Days_to_Harvest"];
+  if (required.some((key) => data[key] === undefined || data[key] === null || data[key] === "")) {
+    return res.status(400).json({ error: "Please select a value for every yield factor." });
+  }
+  if (!yieldOptions.Region.includes(data.Region) || !yieldOptions.Soil_Type.includes(data.Soil_Type) ||
+      !yieldOptions.Crop.includes(data.Crop) || !yieldOptions.Weather_Condition.includes(data.Weather_Condition)) {
+    return res.status(400).json({ error: "One or more selected categories are not supported by the trained model." });
+  }
+  for (const field of ["Rainfall_mm", "Temperature_Celsius", "Days_to_Harvest"]) {
+    if (!Number.isFinite(Number(data[field]))) return res.status(400).json({ error: `${field} must be a valid number.` });
+  }
+
+  const python = process.env.PYTHON_PATH || "python";
+  const child = spawn(python, [path.join(__dirname, "yield_predictor.py")], { windowsHide: true });
+  let stdout = "", stderr = "";
+  child.stdout.on("data", (chunk) => { stdout += chunk; });
+  child.stderr.on("data", (chunk) => { stderr += chunk; });
+  child.on("error", (error) => res.status(500).json({ error: `Prediction service could not start: ${error.message}` }));
+  child.on("close", (code) => {
+    if (code !== 0) {
+      console.error("Yield predictor error:", stderr);
+      return res.status(500).json({ error: "The saved yield model could not generate a prediction." });
+    }
+    try { res.json(JSON.parse(stdout)); }
+    catch (error) { console.error("Yield predictor response:", stdout, stderr); res.status(500).json({ error: "The prediction response was invalid." }); }
+  });
+  child.stdin.end(JSON.stringify(data));
 });
 if (require.main === module) app.listen(PORT, () => console.log("Server running on http://localhost:" + PORT));
 module.exports = app;
