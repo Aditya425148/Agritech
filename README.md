@@ -15,3 +15,9 @@ AgriTech is a MongoDB-backed agricultural analysis dashboard.
    This creates indexed `production`, `states`, `crops`, `districts`, and `seasons` collections. Production documents contain their state and crop names, so dashboard queries do not need joins. Re-running the importer replaces agricultural data but retains registered users.
 
 4. In Vercel Project Settings → Environment Variables, add `MONGODB_URI` and optionally `MONGODB_DB`, then deploy.
+
+## Contributors
+
+- Himani Malik
+- Aditya Raghuvanshi
+- Yash Chaudhary
