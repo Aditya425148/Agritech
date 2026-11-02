@@ -1,152 +1,261 @@
 # 🌱 AgriTech — Smart Agricultural Analysis Platform
 
 <p align="center">
+  <img src="https://img.shields.io/badge/AgriTech-Smart%20Agriculture-2E8B57?style=for-the-badge&logo=leaflet&logoColor=white" />
+  <img src="https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Deployment-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</p>
 
-**Turning Agricultural Data into Meaningful Insights.**
-
-A data-driven agricultural analysis dashboard designed to organise, explore, and understand agricultural production data through a MongoDB-powered backend.
-
+<p align="center">
+  <b>Transforming Agricultural Data into Meaningful Insights.</b>
+  <br />
+  An agricultural analysis dashboard designed to organise, explore and understand agricultural production data.
 </p>
 
 ---
 
-## 🌾 About the Project
+## 🌾 About AgriTech
 
-**AgriTech** is a MongoDB-backed agricultural analysis platform that brings agricultural production data into one organised and accessible dashboard.
+**AgriTech** is a MongoDB-backed agricultural analysis dashboard built to make agricultural data more structured, accessible and easier to analyse.
 
-The project focuses on structuring agricultural datasets across states, crops, districts, and seasons, making the information easier to query, analyse, and work with.
+The platform organises agricultural production information across different crops, states, districts and seasons, providing a structured foundation for exploring agricultural datasets.
 
-By combining organised data storage with an analysis dashboard, AgriTech aims to make agricultural information more accessible and useful.
+By combining organised data storage with an analysis dashboard, AgriTech aims to simplify access to agricultural information and support better understanding of production patterns.
 
-## ✨ Key Highlights
+## ✨ Key Features
 
-- 🌍 **Agricultural Data Management:** Organised agricultural production records.
-- 🌱 **Crop-Based Data:** Agricultural information structured around different crops.
-- 🗺️ **State & District Organisation:** Geographical organisation of agricultural records.
-- 📅 **Seasonal Data:** Agricultural information organised by seasons.
-- ⚡ **Optimised Database:** Indexed MongoDB collections for efficient queries.
-- 🔗 **Embedded Data Structure:** Production documents contain state and crop names, reducing the need for database joins.
-- ☁️ **Cloud Deployment:** Supports deployment through Vercel.
-- 🔐 **User Data Retention:** Re-running the agricultural data importer preserves registered users.
+- 🌱 **Agricultural Data Management** — Organised storage of agricultural production records.
+- 🌍 **Geographical Organisation** — Agricultural information structured by states and districts.
+- 🌾 **Crop-Based Analysis** — Structured crop information for agricultural exploration.
+- 📅 **Seasonal Organisation** — Data organised according to agricultural seasons.
+- ⚡ **Optimised Database** — Indexed MongoDB collections for efficient data retrieval.
+- 🔗 **Efficient Data Structure** — Embedded state and crop names within production documents.
+- ☁️ **Cloud Deployment Support** — Configurable deployment through Vercel.
+- 🔐 **User Data Preservation** — Agricultural data imports retain registered user records.
 
-## 🛠️ Technology & Infrastructure
+## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| MongoDB | Database and data storage |
-| MongoDB Atlas | Cloud database hosting |
-| Node.js / npm | Project scripts and migration |
-| Vercel | Application deployment |
+### Programming Languages & Runtime
+
+<p align="left">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+</p>
+
+### Database & Cloud Infrastructure
+
+<p align="left">
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</p>
+
+### Development & Version Control
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
+</p>
+
+> Note: Keep only badges that accurately represent the technologies used in the project.
 
 ## 🗄️ Database Architecture
 
-AgriTech uses MongoDB to store and organise agricultural information into five primary collections:
+AgriTech uses MongoDB to manage and organise agricultural information into five primary collections.
 
-| Collection | Description |
+| Collection | Purpose |
 |---|---|
-| `production` | Agricultural production records |
-| `states` | State-related information |
-| `crops` | Crop-related information |
-| `districts` | District-related information |
-| `seasons` | Seasonal information |
+| `production` | Stores agricultural production records |
+| `states` | Stores state-related information |
+| `crops` | Stores crop-related information |
+| `districts` | Stores district-related information |
+| `seasons` | Stores seasonal information |
 
 ### Database Optimisation
 
 - Indexed collections for efficient data retrieval.
-- Embedded state and crop names within production documents.
-- Reduced dependency on relational joins.
-- Agricultural data can be re-imported without deleting registered user records.
+- Production documents contain their associated state and crop names.
+- Embedded information reduces the need for joins in dashboard queries.
+- Agricultural data can be re-imported without deleting registered users.
 
-## ⚙️ Getting Started
+## 📂 Project Structure
 
-Follow these steps to set up AgriTech locally.
+The application uses a MongoDB-backed architecture with organised agricultural data collections.
 
-### 1. Clone the Repository
+```text
+Agritech/
+│
+├── .env.example
+├── README.md
+├── package.json
+│
+├── Application Files
+│   └── Frontend & Backend
+│
+├── Database
+│   ├── production
+│   ├── states
+│   ├── crops
+│   ├── districts
+│   └── seasons
+│
+└── Migration
+    └── MongoDB Import Script
+```
+
+*The structure above is a conceptual overview. Update it to match the actual repository folders and filenames.*
+
+## ⚙️ Installation & Setup
+
+Follow these instructions to run AgriTech locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
+</p>
+
+### Step 1 — Clone the Repository
 
 ```bash
 git clone https://github.com/Aditya425148/Agritech.git
 ```
 
-### 2. Navigate to the Project
+### Step 2 — Navigate to the Project
 
 ```bash
 cd Agritech
 ```
 
-### 3. Install Dependencies
+### Step 3 — Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Configure MongoDB
+### Step 4 — Configure MongoDB
 
-Create a MongoDB Atlas cluster and database user.
+1. Create a MongoDB Atlas account.
+2. Create a cluster and database user.
+3. Configure network access for your deployment.
+4. Obtain your MongoDB connection URI.
 
-Configure your network access permissions and obtain your MongoDB connection URI.
-
-Create your environment file:
+Create your environment file by copying the example:
 
 ```bash
 cp .env.example .env
 ```
 
-Add your MongoDB connection details:
+Add your MongoDB configuration:
 
 ```env
 MONGODB_URI=your_mongodb_connection_string
 ```
 
-### 5. Migrate Agricultural Data
+Optionally, configure your database name:
 
-Run the included migration script:
+```env
+MONGODB_DB=your_database_name
+```
+
+**Important:** Never upload your `.env` file or expose database credentials publicly.
+
+### Step 5 — Migrate Agricultural Data
+
+Run the included MongoDB migration script:
 
 ```bash
 npm run migrate:mongo
 ```
 
-This imports the included PostgreSQL dump into MongoDB and creates the indexed collections required by the application.
+This imports the included PostgreSQL dump into MongoDB and creates the indexed collections:
 
-**Note:** Re-running the importer replaces agricultural data while retaining registered users.
+- `production`
+- `states`
+- `crops`
+- `districts`
+- `seasons`
+
+Re-running the importer replaces agricultural data while preserving registered users.
 
 ## ☁️ Deployment
 
-AgriTech supports deployment through Vercel.
+AgriTech supports deployment through **Vercel**.
 
-1. Connect your GitHub repository to Vercel.
-2. Open **Project Settings → Environment Variables**.
-3. Add `MONGODB_URI`.
-4. Optionally configure `MONGODB_DB`.
-5. Deploy your application.
+### Deployment Instructions
 
-Make sure your MongoDB Atlas network access settings allow your deployment to connect.
+1. Push the project to GitHub.
+2. Log in to Vercel.
+3. Import the AgriTech repository.
+4. Open **Project Settings → Environment Variables**.
+5. Add the following variables:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+MONGODB_DB=your_database_name
+```
+
+6. Save the environment variables.
+7. Deploy the application.
+
+Ensure that MongoDB Atlas network access permits connections from your deployment environment.
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Cloud-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Database-MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+</p>
+
+## 🔒 Environment Variables
+
+| Variable | Description | Required |
+|---|---|---|
+| `MONGODB_URI` | MongoDB connection string | Yes |
+| `MONGODB_DB` | MongoDB database name | Optional |
+
+Keep all sensitive configuration values inside your local `.env` file or your deployment platform's environment settings.
 
 ## 🤝 Contributors
 
-AgriTech is built through collaboration and shared development efforts.
+AgriTech is developed through collaboration, shared ideas and continuous improvements.
 
-| Contributor | Role |
-|---|---|
-| [Himani Malik](https://github.com/) | Project Contributor |
-| Aditya Raghuvanshi | Project Contributor |
-| Yash Chaudhary | Project Contributor |
+<p align="center">
+    <img src="https://img.shields.io/badge/Himani%20Malik-Contributor-2E8B57?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <img src="https://img.shields.io/badge/Aditya%20Raghuvanshi-Contributor-2E8B57?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Yash%20Chaudhary-Contributor-2E8B57?style=for-the-badge&logo=github&logoColor=white" />
+</p>
 
-We appreciate every contribution that helps improve AgriTech!
+We appreciate everyone who contributes to making AgriTech better!
 
-## 🚀 Our Vision
+## 🚀 Future Scope
 
-Agriculture generates valuable information that can help us better understand production patterns, crops, geographical differences, and seasonal trends.
+Potential areas for further development include:
 
-AgriTech aims to make this information more organised, accessible, and useful through structured data management and an agricultural analysis dashboard.
+- Advanced agricultural data visualisation.
+- Interactive crop production comparisons.
+- State-wise and district-wise agricultural insights.
+- Seasonal production trend analysis.
+- Enhanced dashboard functionality.
+- Improved data processing and performance.
 
-**Building a smarter way to explore agricultural data. 🌱**
+## 🌍 Our Vision
+
+Agriculture is driven by information, patterns and decisions.
+
+AgriTech aims to bring agricultural information into a structured digital environment where production data can be explored, understood and used more effectively.
+
+Our goal is to make agricultural data more accessible through technology, innovation and data-driven insights.
 
 ---
 
 <p align="center">
-
-**AgriTech | Data • Agriculture • Innovation**
-
-*Growing insights, one dataset at a time.*
-
+  <b>🌱 AgriTech — Growing Insights, Empowering Agriculture.</b>
+  <br />
+  <i>Built with technology. Inspired by agriculture.</i>
 </p>
